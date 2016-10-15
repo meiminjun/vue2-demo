@@ -28,6 +28,11 @@ module.exports = {
         query: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style','css'],
+        include: /node_modules/
       }
     ]
   },
@@ -35,7 +40,11 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  resolve: {
+    extensions: ['.vue', '.js',' .css'],
+    alias: {vue:'vue/dist/vue.js'}
+  }
 }
 
 if (process.env.NODE_ENV === 'production') {
