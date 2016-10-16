@@ -19,3 +19,20 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 
 中文文档：
 http://vuefe.cn/guide/
+
+
+## 坑：
+
+1. 在引入饿了么组件时，需在依赖css-loader、style-loader，并配置webpack
+
+```
+loaders: [
+      {
+        test: /\.css$/,
+        loaders: ['style','css'],
+        include: /node_modules/
+      }
+    ]
+```
+
+2.
