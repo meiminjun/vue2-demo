@@ -1,14 +1,15 @@
 import Vue from 'vue'
-// import MintUI from 'mint-ui'
-// import VueResource from "vue-resource"
-
-import App from './App.vue'
+import VueResource from "vue-resource"
+// import store from './vuex/store'
 import router from './router'
 
+import MintUI from 'mint-ui';
+Vue.use(MintUI);
 
-Vue.config.debug = true
-// Vue.use(MintUI)
-// Vue.use(VueResource)
+import App from './App.vue'
+
+Vue.config.debug = true;
+Vue.use(VueResource)
 
 var app = new Vue({
 	router,
