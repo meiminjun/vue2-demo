@@ -23,8 +23,16 @@
             </mt-swipe-item>
           </mt-swipe>
         </div>
+        <div v-for="data in arr">
+            <firstcomponent
+              v-bind:title="data.title"
+              v-bind:url="data.url"
+              v-bind:desc="data.desc"
+            ></firstcomponent>
+        </div>
 
-          <mt-cell v-for="article in articles" :title=article.title />
+
+          <!-- <mt-cell v-for="article in articles" :title=article.title /> -->
         </mt-tab-container-item>
         <mt-tab-container-item id="订单">
           <mt-cell v-for="n in 5" :title="'订单 ' + n" />
@@ -64,18 +72,38 @@
 </template>
 
 <script>
+  import firstcomponent  from '../../components/firstcomponent.vue'
+
   export default {
     data() {
       return {
         articles: [],
         selected:'外卖',
-         wrapperHeight: 0
+        wrapperHeight: 0,
+        arr:[{
+          title:"鱼香肉丝",
+          url:"http://img2.pingan.com/app_images/pingan/pa_2016/v2/rmhd_01.jpg",
+          desc:"这是一盆想喷可口的菜"
+        },{
+          title:"鱼香肉丝",
+          url:"http://img2.pingan.com/app_images/pingan/pa_2016/v2/rmhd_01.jpg",
+          desc:"这是一盆想喷可口的菜"
+        },{
+          title:"鱼香肉丝",
+          url:"http://img2.pingan.com/app_images/pingan/pa_2016/v2/rmhd_01.jpg",
+          desc:"这是一盆想喷可口的菜"
+        },{
+          title:"鱼香肉丝",
+          url:"http://img2.pingan.com/app_images/pingan/pa_2016/v2/rmhd_01.jpg",
+          desc:"这是一盆想喷可口的菜"
+        }]
       };
     },
+    components: { firstcomponent },
     created() {
 
     },
-    mounted: function() {
+    mounted() {
         this.$http.jsonp('https://api.douban.com/v2/movie/top250?count=30', {}, {
             headers: {
             },
