@@ -20,6 +20,9 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 中文文档：
 http://vuefe.cn/guide/
 
+vuex:
+
+https://vuex.vuejs.org/zh-cn/intro.html
 
 ## 坑：
 

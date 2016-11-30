@@ -12,12 +12,13 @@
     <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
     <div class="pad-5" @click="login">
       <mt-button  type="primary" size="large" >登录</mt-button>
+      <div>{{count}}</div>
     </div>
   </div>
 </template>
 
 <script>
-  import { Toast } from 'mint-ui'
+  import { Toast,Indicator } from 'mint-ui'
   import router from '../../router'
   export default {
     data() {
@@ -26,7 +27,30 @@
         password:''
       }
     },
+
+    created() {
+
+      this.count = this.$store.state.count;
+      this.init();
+    },
+    mounted() {
+    },
     methods: {
+      init() {
+        Indicator.open({
+          text: '加载中...',
+          spinnerType: 'snake'
+        });
+        // 获取数据
+        this.getData();
+      },
+      getData() {
+        setTimeout(()=>{
+          // 加载关闭
+          Indicator.close()
+          this.$store.commit("increment");
+        },1000)
+      },
       login(event) {
         if(this.username === 'admin'&&this.password === "admin") {
           router.push('/')
